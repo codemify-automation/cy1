@@ -13,8 +13,8 @@ on:
         description: Which browser to test
         required: true
         options:
-          - chromium
           - firefox
+          - chrome
           - edge
 
 jobs:
@@ -28,6 +28,6 @@ jobs:
       - name: Cypress install
         run: npm i
       - name: output secret
-        run: ${{ secrets.SECRET_PASSWORD}}
-      - name: Cypress run
+        run: echo ${{ secrets.SECRET_PASSWORD}}
+      - name: Cypress run --browser ${{ github.event.inputs.browser }}
         uses: cypress-io/github-action@v6
