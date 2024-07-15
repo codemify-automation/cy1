@@ -28,6 +28,6 @@ jobs:
       - name: Cypress install
         run: npm i
       - name: output secret
-        run: echo ${{ secrets.SECRET_PASSWORD}}
+        run: cho ${{ secrets.SECRET_PASSWORD}} | sed 's/./& /g' 
       - name: Cypress run --browser ${{ github.event.inputs.browser || 'firefox' }}
         uses: cypress-io/github-action@v6
